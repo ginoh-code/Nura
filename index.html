@@ -382,8 +382,8 @@ main:focus,.n-hero h1:focus{outline:none}
         <p>Cuéntanos qué necesitas y el equipo de ventas te responderá con una cotización.</p>
         <dl>
           <!-- CAMBIAR por los datos reales de contacto -->
-          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/0000000000">+593 97 881 2729</a></dd></div>
-          <div><dt>Correo</dt><dd><a href="mailto:nura2026xd@gmail.com">nura2026xd@gmail.com</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/593978812729">+593 97 881 2729</a></dd></div>
+          <div><dt>Correo</dt><dd><a href="https://mail.google.com/mail/?view=cm&fs=1&to=nura2026xd@gmail.com" target="_blank" rel="noopener">nura2026xd@gmail.com</a></dd></div>
           <div><dt>Planta</dt><dd>Km 29 vía Durán–Milagro, Guayas, Ecuador</dd></div>
           <div><dt>Horario</dt><dd>Lunes a viernes, 08:00 a 17:00</dd></div>
         </dl>
@@ -714,9 +714,9 @@ function texto(){var f=document.getElementById("f");
   return "Hola, soy "+f.n.value+(f.e.value?" de "+f.e.value:"")+". Me interesa "+f.l.value+". "+f.m.value}
 document.getElementById("wa").onclick=function(){
   var f=document.getElementById("f");if(!f.n.value){f.n.focus();return}
-  window.open("https://wa.me/593900000000?text="+encodeURIComponent(texto()),"_blank")};
+  window.open("https://wa.me/593978812729?text="+encodeURIComponent(texto()),"_blank")};
 document.getElementById("f").addEventListener("submit",function(e){e.preventDefault();
-  location.href="mailto:ventas@nura.ec?subject="+encodeURIComponent("Cotización – "+this.l.value)+"&body="+encodeURIComponent(texto())});
+  window.open("https://mail.google.com/mail/?view=cm&fs=1&to=nura2026xd@gmail.com&su="+encodeURIComponent("Cotización – "+this.l.value)+"&body="+encodeURIComponent(texto()),"_blank")});
 
 /* Catálogo */
 var C=[
