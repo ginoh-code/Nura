@@ -240,6 +240,18 @@ main:focus,.n-hero h1:focus{outline:none}
   .org-row{--n:1!important}
 }
 @media (max-width:480px){.areas{grid-template-columns:1fr}}
+
+/* Productos: banners grandes apilados */
+.rail{--banner-h:340px;--img-w:540px;--img-h:320px;display:grid;gap:24px;overflow:visible;scroll-snap-type:none;padding:0;margin:0}
+.rail .card{flex:none;display:grid;grid-template-columns:1fr 1fr;min-height:var(--banner-h);border-radius:14px}
+.rail .card .art{order:2;height:auto;min-height:var(--banner-h);padding:0}
+.rail .card:nth-child(even) .art{order:0}
+.rail .card .body{padding:clamp(24px,4vw,48px);justify-content:center;gap:14px}
+.rail .card h3{font-size:clamp(30px,4.2vw,46px);line-height:1}
+.rail .card p{font-size:18px}
+.rail .card ul{font-size:16px}
+.rail .card .btn{margin-top:10px;align-self:flex-start;padding:15px 28px}
+@media (max-width:760px){.rail{--img-w:240px;--img-h:240px}.rail .card{grid-template-columns:1fr;min-height:0}.rail .card .art,.rail .card:nth-child(even) .art{order:0;min-height:280px}}
 </style>
 </head>
 <body>
@@ -280,11 +292,7 @@ main:focus,.n-hero h1:focus{outline:none}
       <div class="sec-h">
         <div>
           <h2>Cinco líneas de productos</h2>
-          <p>Desliza para ver cada línea. Elige una y pide información sobre ella.</p>
-        </div>
-        <div class="arrows">
-          <button type="button" id="prev" aria-label="Anterior">‹</button>
-          <button type="button" id="next" aria-label="Siguiente">›</button>
+          <p>Elige una línea y agrégala a tu cotización.</p>
         </div>
       </div>
       <div class="rail" id="rail" tabindex="0" aria-label="Líneas de productos"></div>
@@ -313,7 +321,7 @@ main:focus,.n-hero h1:focus{outline:none}
         <div><h3>Economía circular</h3><p>Los materiales permanecen en el ciclo productivo el mayor tiempo posible.</p></div>
         <div><h3>Calidad verificada</h3><p>Cada producto se evalúa antes de almacenarse y despacharse.</p></div>
         <div><h3>Pensado para obra e industria</h3><p>Aislamiento térmico, acústico, materiales ligeros y elementos no estructurales.</p></div>
-        <div><h3>Ubicación estratégica</h3><p>Zona industrial de Milagro, sobre el corredor vial Durán–Milagro.</p></div>
+        <div><h3>Ubicación estratégica</h3><p>Ubicada en el Km 29 de la via Durán–Milagro.</p></div>
       </div>
     </div>
   </section>
@@ -536,11 +544,11 @@ var P=[
  {n:"NURA Panel",t:"Paneles compuestos multicapa",m:"Caras de plástico reciclado, núcleo de EPS y capas de PET.",u:["Combina aislamiento y rigidez"],c:"linear-gradient(135deg,#5b2fc0,#8b5cf6)",tag:"EPS · PET"},
  {n:"NURA Build",t:"Construcción no estructural",m:"Placas de plástico reciclado y fibras vegetales.",u:["Divisiones","Revestimientos","Cerramientos"],c:"linear-gradient(135deg,#7a45e5,#f06ba8)",tag:"Plástico · Fibras"}
 ];
-var IMG=["img/thermo.png","img/acoustic.png","img/light.png","img/panel.png","img/build.png"];
+var IMG=["img/thermo.jpeg","img/acoustic.jpeg","img/light.png","img/panel.png","img/build.png"];
 var rail=document.getElementById("rail"),sel=document.getElementById("linea");
 P.forEach(function(p,i){
   var li=p.u.map(function(x){return "<li>"+x+"</li>"}).join("");
-  rail.insertAdjacentHTML("beforeend",'<article class="card"><div class="art" style="background:url('+IMG[i]+') center/contain no-repeat,var(--tint)"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><ul>'+li+'</ul><button class="btn" type="button" data-i="'+i+'">Agregar a la cotización</button></div></article>');
+  rail.insertAdjacentHTML("beforeend",'<article class="card"><div class="art" style="background:url('+IMG[i]+') center/var(--img-w) var(--img-h) no-repeat,'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><ul>'+li+'</ul><button class="btn" type="button" data-i="'+i+'">Agregar a la cotización</button></div></article>');
   sel.insertAdjacentHTML("beforeend",'<option>'+p.n+'</option>');
 });
 sel.insertAdjacentHTML("beforeend","<option>Otra consulta</option>");
@@ -584,9 +592,6 @@ $('t1').onclick=function(){setMode('in')};$('t2').onclick=function(){setMode('up
 $('lo').onclick=function(){me=null;sv('nura_me',null);drawAcc();toast('Sesión cerrada')};
 document.addEventListener('keydown',function(e){if(e.key=='Escape'){openCart(false);openM(false)}});
 setMode('in');drawAcc();drawCart();
-function step(d){rail.scrollBy({left:d*320,behavior:"smooth"})}
-document.getElementById("prev").onclick=function(){step(-1)};
-document.getElementById("next").onclick=function(){step(1)};
 function texto(){var f=document.getElementById("f");
   return "Hola, soy "+f.n.value+(f.e.value?" de "+f.e.value:"")+". Me interesa "+f.l.value+". "+f.m.value}
 document.getElementById("wa").onclick=function(){
