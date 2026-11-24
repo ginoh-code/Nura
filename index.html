@@ -126,7 +126,7 @@ section{padding:72px 0}
 .steps h3{font-size:18px;font-weight:800;margin-top:12px}
 .steps p{font-size:14.5px;margin:6px 0 0;color:var(--muted);line-height:1.45}
 ol.steps{margin:0;padding:0}
-@media (max-width:860px){.steps{grid-template-columns:1fr;border-top:0;border-left:3px solid var(--pink);gap:22px;padding-left:22px}.steps li{padding:0}.steps li::before{top:0;left:-39px}.steps h3{margin-top:0}}
+@media (max-width:860px){ol.steps{grid-template-columns:1fr;border-top:0;border-left:3px solid var(--pink);gap:22px;margin-left:16px}.steps li{padding:0 0 0 30px}.steps li::before{top:0;left:-17px}.steps h3{margin-top:0}}
 
 /* Por qué NURA */
 .why{background:var(--tint);border-block:1px solid var(--line)}
@@ -224,11 +224,12 @@ main:focus,.n-hero h1:focus{outline:none}
 .areas{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:a}
 .areas li{counter-increment:a;background:var(--tint);border:1px solid var(--tint2);border-radius:8px;padding:16px;font:800 18px/1.2 var(--head);display:flex;gap:12px;align-items:center}
 .areas li::before{content:counter(a);flex:0 0 32px;height:32px;border-radius:50%;background:var(--brand);color:var(--on-brand);text-align:center;font:800 15px/32px var(--head)}
-.team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
 .member{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--brand);border-radius:8px;padding:20px}
 .member h3{margin-bottom:2px}.member .role{margin:0 0 12px;font-weight:600}
 .member dl{margin:0;display:grid;gap:10px}.member dt{font:700 13px var(--head);color:var(--brand);text-transform:uppercase;letter-spacing:.04em}
 .member dd{margin:0;overflow-wrap:anywhere}
+@media (max-width:1100px){.team{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){.team{grid-template-columns:1fr}}
 @media (max-width:860px){.two{grid-template-columns:1fr;gap:8px}.cards3,.cards5{grid-template-columns:1fr}.areas{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){
@@ -287,6 +288,19 @@ main:focus,.n-hero h1:focus{outline:none}
 .pc .btn{font-size:15px;padding:13px;text-align:center;margin-top:8px}
 .cnote{font-size:14px;color:var(--muted);margin:26px 0 16px}
 .cat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+
+/* Pedido simulado */
+.it{flex-wrap:wrap}.it small{display:block;color:var(--muted);font-size:14px}.it .sub{font:800 16px var(--head);min-width:72px;text-align:right}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}.tot b{font:800 26px var(--head)}
+.df .btn+.btn{margin-top:10px}
+.sim{background:var(--tint);border-left:4px solid var(--pink);padding:10px 14px;border-radius:4px;margin:12px 0;font-size:15px}
+.pm{border:2px solid var(--tint2);border-radius:6px;padding:10px 14px;display:grid;gap:8px;margin:0}
+.pm legend{font-weight:700;font-size:15px;padding:0 6px}
+.pm label{display:flex;align-items:center;gap:10px;font-weight:600}.pm input{width:auto}
+.orow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:15px}
+.orow.tt{font-weight:800;border-bottom:0}
+.ordw{margin-top:22px;border-top:1px solid var(--line);padding-top:14px}.ordw h3{font-size:19px;margin-bottom:6px}
+.ord{border:1px solid var(--line);border-radius:6px;padding:8px 12px;margin-top:8px}.ord summary{cursor:pointer;font-weight:600;font-size:15px}
 </style>
 </head>
 <body>
@@ -302,7 +316,7 @@ main:focus,.n-hero h1:focus{outline:none}
     </nav>
     <div class="tools">
       <button class="ib" type="button" id="acc" aria-label="Mi cuenta"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-6 8-6s7 1.5 8 6"/></svg><span class="t" id="accT">Ingresar</span></button>
-      <button class="ib" type="button" id="cartB" aria-label="Carrito de cotización"><svg viewBox="0 0 24 24"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H6.2"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg><span class="n" id="cnt" hidden>0</span></button>
+      <button class="ib" type="button" id="cartB" aria-label="Mi pedido"><svg viewBox="0 0 24 24"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H6.2"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg><span class="n" id="cnt" hidden>0</span></button>
     </div>
   </div>
 </header>
@@ -368,9 +382,9 @@ main:focus,.n-hero h1:focus{outline:none}
         <p>Cuéntanos qué necesitas y el equipo de ventas te responderá con una cotización.</p>
         <dl>
           <!-- CAMBIAR por los datos reales de contacto -->
-          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/0000000000">+593 98 773 4000</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/0000000000">+593 97 881 2729</a></dd></div>
           <div><dt>Correo</dt><dd><a href="mailto:nura2026xd@gmail.com">nura2026xd@gmail.com</a></dd></div>
-          <div><dt>Planta</dt><dd>Zona industrial, vía Durán–Milagro, Guayas, Ecuador</dd></div>
+          <div><dt>Planta</dt><dd>Km 29 vía Durán–Milagro, Guayas, Ecuador</dd></div>
           <div><dt>Horario</dt><dd>Lunes a viernes, 08:00 a 17:00</dd></div>
         </dl>
       </div>
@@ -401,7 +415,7 @@ main:focus,.n-hero h1:focus{outline:none}
       <button class="ntab" role="tab" id="tab-2" aria-controls="pn-2" aria-selected="false" tabindex="-1" type="button">Cómo trabajamos</button>
       <button class="ntab" role="tab" id="tab-3" aria-controls="pn-3" aria-selected="false" tabindex="-1" type="button">Organización</button>
       <button class="ntab" role="tab" id="tab-4" aria-controls="pn-4" aria-selected="false" tabindex="-1" type="button">Ubicación</button>
-      <button class="ntab" role="tab" id="tab-5" aria-controls="pn-5" aria-selected="false" tabindex="-1" type="button">Integrantes</button>
+      <button class="ntab" role="tab" id="tab-5" aria-controls="pn-5" aria-selected="false" tabindex="-1" type="button">Trabajadores</button>
     </div>
 
     <section class="npanel" role="tabpanel" id="pn-1" aria-labelledby="tab-1" tabindex="0">
@@ -498,37 +512,43 @@ main:focus,.n-hero h1:focus{outline:none}
     </section>
 
     <section class="npanel" role="tabpanel" id="pn-5" aria-labelledby="tab-5" tabindex="0" hidden>
-      <h2>Integrantes</h2>
-      <p>Equipo de NURA. Los datos de abajo son de ejemplo: reemplázalos por los reales.</p>
+      <h2>Trabajadores</h2>
+      <p>Equipo de NURA.</p>
       <div class="team">
-        <!-- ===== INTEGRANTE 1: copia y pega este bloque para agregar más ===== -->
         <article class="member">
-          <h3>Nombre Apellido</h3>
-          <p class="role">Cargo o área</p>
+          <h3>ROSALES VERA JEFFERSON ADÁN</h3>
+          <p class="role">CEO · Gerencia General</p>
           <dl>
-            <dt>Correo</dt><dd>correo@ejemplo.com</dd>
-            <dt>Teléfono</dt><dd>09XXXXXXXX</dd>
-            <dt>Número de ventas</dt><dd>0</dd>
+            <dt>Correo</dt><dd>jrosalesv5@unemi.edu.ec</dd>
+            <dt>Teléfono</dt><dd>0939334984</dd>
           </dl>
         </article>
-        <!-- ===== INTEGRANTE 2: copia y pega este bloque para agregar más ===== -->
+
         <article class="member">
-          <h3>Nombre Apellido</h3>
-          <p class="role">Cargo o área</p>
+          <h3>GUASHPA YANTALEMA JHON STALIN</h3>
+          <p class="role">Asesor de Ventas</p>
           <dl>
-            <dt>Correo</dt><dd>correo@ejemplo.com</dd>
-            <dt>Teléfono</dt><dd>09XXXXXXXX</dd>
-            <dt>Número de ventas</dt><dd>0</dd>
+            <dt>Correo</dt><dd>jguashpay2@unemi.edu.ec</dd>
+            <dt>Teléfono</dt><dd>0978812729</dd>
+            <dt>Número de ventas</dt><dd>67</dd>
           </dl>
         </article>
-        <!-- ===== INTEGRANTE 3: copia y pega este bloque para agregar más ===== -->
+
         <article class="member">
-          <h3>Nombre Apellido</h3>
-          <p class="role">Cargo o área</p>
+          <h3>VILLALVA MENDOZA ALEX MARCELL</h3>
+          <p class="role">Jefe de Producción</p>
           <dl>
-            <dt>Correo</dt><dd>correo@ejemplo.com</dd>
-            <dt>Teléfono</dt><dd>09XXXXXXXX</dd>
-            <dt>Número de ventas</dt><dd>0</dd>
+            <dt>Correo</dt><dd>@unemi.edu.ec</dd>
+            <dt>Teléfono</dt><dd>0987734700</dd>
+          </dl>
+        </article>
+
+        <article class="member">
+          <h3>MARQUEZ JARAMILLO JOSE PAUL</h3>
+          <p class="role">Jefe de Calidad e Innovación</p>
+          <dl>
+            <dt>Correo</dt><dd>jmarquezj@unemi.edu.ec</dd>
+            <dt>Teléfono</dt><dd>0992103739</dd>
           </dl>
         </article>
       </div>
@@ -537,10 +557,10 @@ main:focus,.n-hero h1:focus{outline:none}
 </main>
 
 <div class="shade" id="shade"></div>
-<aside class="drawer" id="drawer" aria-label="Carrito de cotización">
-  <div class="dh"><h2>Mi cotización</h2><button class="x" type="button" id="cx" aria-label="Cerrar">×</button></div>
+<aside class="drawer" id="drawer" aria-label="Mi pedido">
+  <div class="dh"><h2>Mi pedido</h2><button class="x" type="button" id="cx" aria-label="Cerrar">×</button></div>
   <div class="db" id="items"></div>
-  <div class="df"><button class="btn" type="button" id="go">Solicitar cotización</button></div>
+  <div class="df"><div class="tot"><span>Total (referencial)</span><b id="tot">$0,00</b></div><button class="btn" type="button" id="pay">Finalizar compra (simulada)</button><button class="btn ghost" type="button" id="go">Solicitar cotización</button></div>
 </aside>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt">
   <div class="box">
@@ -559,6 +579,33 @@ main:focus,.n-hero h1:focus{outline:none}
     <div id="inn" hidden>
       <p id="hi"></p>
       <button class="btn" type="button" id="lo">Cerrar sesión</button>
+    </div>
+    <div class="ordw" id="ordW"></div>
+  </div>
+</div>
+<div class="modal" id="co" role="dialog" aria-modal="true" aria-labelledby="coT">
+  <div class="box" style="width:min(480px,100%)">
+    <button class="x" type="button" id="cox" aria-label="Cerrar" style="position:absolute;top:8px;right:8px">×</button>
+    <h2 id="coT" style="font-size:26px">Finalizar compra</h2>
+    <div class="sim" role="note"><b>Compra simulada.</b> Proyecto académico: no se realiza ningún cobro ni se piden datos de pago reales.</div>
+    <div id="coF">
+      <div id="coS"></div>
+      <form id="cof">
+        <label>Nombre<input id="con" required autocomplete="name"></label>
+        <label>Correo<input id="coe" type="email" required autocomplete="email"></label>
+        <fieldset class="pm"><legend>Método de pago (simulado)</legend>
+          <label><input type="radio" name="pm" value="Tarjeta" checked> Tarjeta</label>
+          <label><input type="radio" name="pm" value="Transferencia"> Transferencia</label>
+          <label><input type="radio" name="pm" value="Contra entrega"> Contra entrega</label>
+        </fieldset>
+        <button class="btn" type="submit">Confirmar pedido simulado</button>
+      </form>
+    </div>
+    <div id="coD" hidden>
+      <p style="font-size:20px;margin:4px 0"><b>Pedido realizado</b></p>
+      <p style="margin:0 0 10px">Número de pedido: <b id="cod"></b></p>
+      <div id="coR"></div>
+      <button class="btn" type="button" id="cok" style="margin-top:16px">Seguir comprando</button>
     </div>
   </div>
 </div>
@@ -616,7 +663,7 @@ var LK=["thermo","acoustic","light","panel","build"];
 var rail=document.getElementById("rail"),sel=document.getElementById("linea");
 P.forEach(function(p,i){
   var li=p.u.map(function(x){return "<li>"+x+"</li>"}).join("");
-  rail.insertAdjacentHTML("beforeend",'<article class="card"><div class="art" style="background:url('+IMG[i]+') center/var(--img-w) var(--img-h) no-repeat,'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><ul>'+li+'</ul><div class="acts"><button class="btn" type="button" data-i="'+i+'">Realizar una cotización</button><a class="btn ghost" href="#catalogo-'+LK[i]+'">Ver productos</a></div></div></article>');
+  rail.insertAdjacentHTML("beforeend",'<article class="card"><div class="art" style="background:url('+IMG[i]+') center/var(--img-w) var(--img-h) no-repeat,'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><ul>'+li+'</ul><div class="acts"><a class="btn" href="#catalogo-'+LK[i]+'">Ver productos</a></div></div></article>');
   sel.insertAdjacentHTML("beforeend",'<option>'+p.n+'</option>');
 });
 sel.insertAdjacentHTML("beforeend","<option>Otra consulta</option>");
@@ -625,13 +672,16 @@ function ld(k,d){try{var v=S&&S.getItem(k);return v?JSON.parse(v):d}catch(e){ret
 function sv(k,v){try{S&&S.setItem(k,JSON.stringify(v))}catch(e){}}
 var $=function(i){return document.getElementById(i)},cart=ld('nura_cart',{}),users=ld('nura_users',{}),me=ld('nura_me',null),mode='in';
 function toast(t){var e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove('on')},1800)}
-function drawCart(){var ks=Object.keys(cart),n=0,h='';
-  ks.forEach(function(k){n+=cart[k];h+='<div class="it"><div><b>'+k+'</b><br><button class="rm" data-r="'+k+'">Quitar</button></div><div class="q"><button data-d="-1" data-k="'+k+'" aria-label="Menos">−</button><span>'+cart[k]+'</span><button data-d="1" data-k="'+k+'" aria-label="Más">+</button></div></div>'});
-  $('items').innerHTML=h||'<p class="empty">Aún no agregaste productos. Elige una línea en Productos.</p>';
-  $('go').disabled=!ks.length;var c=$('cnt');c.textContent=n;c.hidden=!n;sv('nura_cart',cart)}
+function drawCart(){
+  if(typeof PR==='undefined')return;
+  var ks=Object.keys(cart),n=0,t=0,h='';
+  ks.forEach(function(k){var p=PR[k],q=cart[k];n+=q;t+=p.price*q;
+    h+='<div class="it"><div><b>'+k+'</b><small>'+p.pres+' · '+money(p.price)+'</small><button class="rm" data-r="'+k+'">Quitar</button></div><div class="q"><button data-d="-1" data-k="'+k+'" aria-label="Menos">−</button><span>'+q+'</span><button data-d="1" data-k="'+k+'" aria-label="Más">+</button></div><div class="sub">'+money(p.price*q)+'</div></div>'});
+  $('items').innerHTML=h||'<p class="empty">Aún no agregaste productos. <a href="#catalogo">Ir al catálogo</a></p>';
+  $('tot').textContent=money(t);$('go').disabled=$('pay').disabled=!ks.length;
+  var c=$('cnt');c.textContent=n;c.hidden=!n;sv('nura_cart',cart)}
 function openCart(o){$('drawer').classList.toggle('on',o);$('shade').classList.toggle('on',o)}
-rail.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(!b)return;var k=P[+b.dataset.i].n;cart[k]=(cart[k]||0)+1;drawCart();toast(k+' agregado a la cotización')});
-$('items').addEventListener('click',function(e){var b=e.target;
+$('items').addEventListener('click',function(e){var b=e.target;if(b.tagName=='A'){openCart(false);return}
   if(b.dataset.r){delete cart[b.dataset.r]}
   else if(b.dataset.k){var k=b.dataset.k;cart[k]+=+b.dataset.d;if(cart[k]<1)delete cart[k]}
   else return;drawCart()});
@@ -643,7 +693,7 @@ $('go').onclick=function(){var ks=Object.keys(cart);if(!ks.length)return;var f=$
   var o=[].map.call(sel.options,function(x){return x.text}),i=o.indexOf(ks[0]);if(i>-1)sel.selectedIndex=i;
   openCart(false);if(vIni.hidden){location.hash='contacto'}else{$('contacto').scrollIntoView({behavior:'smooth'})}};
 function hs(s){if(window.crypto&&crypto.subtle&&window.TextEncoder){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')})}return Promise.resolve(btoa(unescape(encodeURIComponent(s))))}
-function drawAcc(){$('accT').textContent=me?me.name.split(' ')[0]:'Ingresar';$('out').hidden=!!me;$('inn').hidden=!me;if(me)$('hi').textContent='Sesión iniciada como '+me.name+' ('+me.email+').'}
+function drawAcc(){drawOrders();$('accT').textContent=me?me.name.split(' ')[0]:'Ingresar';$('out').hidden=!!me;$('inn').hidden=!me;if(me)$('hi').textContent='Sesión iniciada como '+me.name+' ('+me.email+').'}
 function openM(o){$('modal').classList.toggle('on',o);if(o){$('am').textContent='';drawAcc()}}
 function setMode(m){mode=m;$('t1').classList.toggle('on',m=='in');$('t2').classList.toggle('on',m=='up');$('ln').hidden=m=='in';$('an').required=m=='up';$('as').textContent=m=='in'?'Ingresar':'Crear cuenta'}
 $('af').addEventListener('submit',function(e){e.preventDefault();var fm=e.target,em=$('ae').value.trim().toLowerCase(),pw=$('ap').value,nm=$('an').value.trim(),m=$('am');m.className='msg';
@@ -658,7 +708,7 @@ $('mx').onclick=function(){openM(false)};
 $('modal').addEventListener('click',function(e){if(e.target===this)openM(false)});
 $('t1').onclick=function(){setMode('in')};$('t2').onclick=function(){setMode('up')};
 $('lo').onclick=function(){me=null;sv('nura_me',null);drawAcc();toast('Sesión cerrada')};
-document.addEventListener('keydown',function(e){if(e.key=='Escape'){openCart(false);openM(false)}});
+document.addEventListener('keydown',function(e){if(e.key=='Escape'){openCart(false);openM(false);openCo(false)}});
 setMode('in');drawAcc();drawCart();
 function texto(){var f=document.getElementById("f");
   return "Hola, soy "+f.n.value+(f.e.value?" de "+f.e.value:"")+". Me interesa "+f.l.value+". "+f.m.value}
@@ -724,9 +774,40 @@ function showLine(i){
   [].forEach.call(lc.children,function(c,j){c.setAttribute('aria-pressed',j===i)});
   if(i<0)return;
   var l=C[i],h='<div class="ctag">Línea 0'+(i+1)+'</div><h2 id="catH" tabindex="-1">NURA '+l.n+'</h2><p class="cl-d"><b>'+l.s+'.</b> '+l.d+'</p><div class="pgrid">';
-  l.p.forEach(function(p){h+='<article class="pc"><div class="pimg">'+art(p[7],l.c)+'</div><div class="pb"><div class="code">'+p[0]+'</div><h3>'+p[1]+'</h3><p>'+p[4]+'</p><p><span class="k">Materiales</span>'+p[5]+'</p><p><span class="k">Aplicaciones</span>'+p[6]+'</p><div class="pr"><span>'+p[2]+'</span><b>$'+p[3]+'</b></div><button class="btn" type="button" data-p="'+p[1]+'">Agregar a la cotización</button></div></article>'});
+  l.p.forEach(function(p){h+='<article class="pc"><div class="pimg">'+art(p[7],l.c)+'</div><div class="pb"><div class="code">'+p[0]+'</div><h3>'+p[1]+'</h3><p>'+p[4]+'</p><p><span class="k">Materiales</span>'+p[5]+'</p><p><span class="k">Aplicaciones</span>'+p[6]+'</p><div class="pr"><span>'+p[2]+'</span><b>$'+p[3]+'</b></div><button class="btn" type="button" data-p="'+p[1]+'">Agregar al pedido</button></div></article>'});
   $('catBody').innerHTML=h+'</div>'}
-$('catBody').addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(!b)return;var k=b.dataset.p;cart[k]=(cart[k]||0)+1;drawCart();toast(k+' agregado a la cotización')});
+$('catBody').addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(!b)return;var k=b.dataset.p;cart[k]=(cart[k]||0)+1;drawCart();toast(k+' agregado al pedido')});
+
+/* Pedido simulado */
+var PR={};C.forEach(function(l){l.p.forEach(function(p){PR[p[1]]={code:p[0],pres:p[2],price:parseFloat(p[3].replace(',','.'))}})});
+Object.keys(cart).forEach(function(k){if(!PR[k])delete cart[k]});
+function money(n){return '$'+n.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.')}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var orders=ld('nura_orders',{});
+function okey(){return me?me.email:'invitado'}
+function rows(items){return items.map(function(i){return '<div class="orow"><span>'+i.n+' × '+i.q+'</span><span>'+money(i.p*i.q)+'</span></div>'}).join('')}
+function total(items){return items.reduce(function(a,i){return a+i.p*i.q},0)}
+function cartItems(){return Object.keys(cart).map(function(k){return {n:k,q:cart[k],p:PR[k].price}})}
+function drawOrders(){if(typeof orders==='undefined')return;var l=orders[okey()]||[];
+  $('ordW').innerHTML='<h3>Mis pedidos (simulados)</h3>'+(l.length?l.map(function(o){return '<details class="ord"><summary>'+o.id+' · '+o.f+' · '+money(o.t)+'</summary>'+rows(o.items)+'<p class="msg">Pago: '+esc(o.pm)+' (simulado)</p></details>'}).join(''):'<p class="msg">Aún no tienes pedidos.</p>')}
+function openCo(o){$('co').classList.toggle('on',o);if(!o)return;
+  var it=cartItems();$('coF').hidden=false;$('coD').hidden=true;
+  $('coS').innerHTML=rows(it)+'<div class="orow tt"><span>Total (referencial, sin IVA)</span><span>'+money(total(it))+'</span></div>';
+  if(me){$('con').value=me.name;$('coe').value=me.email}
+  setTimeout(function(){$('con').focus()},0)}
+$('pay').onclick=function(){if(!Object.keys(cart).length)return;openCart(false);openCo(true)};
+$('cox').onclick=$('cok').onclick=function(){openCo(false)};
+$('co').addEventListener('click',function(e){if(e.target===this)openCo(false)});
+$('cof').addEventListener('submit',function(e){e.preventDefault();
+  if(!Object.keys(cart).length)return;
+  var it=cartItems(),pm=document.querySelector('input[name="pm"]:checked'),
+      o={id:'NURA-'+String(Date.now()).slice(-6),f:new Date().toLocaleString('es-EC'),nom:$('con').value.trim(),mail:$('coe').value.trim(),pm:pm?pm.value:'Tarjeta',items:it,t:total(it)};
+  var k=okey();(orders[k]=orders[k]||[]).unshift(o);sv('nura_orders',orders);
+  cart={};drawCart();
+  $('cod').textContent=o.id;
+  $('coR').innerHTML=rows(o.items)+'<div class="orow tt"><span>Total referencial</span><span>'+money(o.t)+'</span></div><p class="msg">Cliente: '+esc(o.nom)+' · '+esc(o.mail)+'<br>Pago: '+esc(o.pm)+'</p>';
+  $('coF').hidden=true;$('coD').hidden=false;this.reset();drawOrders();toast('Pedido realizado (simulado)')});
+drawCart();
 
 /* Vistas (hash): inicio, nosotros, catalogo */
 var vIni=$('inicio'),vNos=$('nosotros'),vCat=$('catalogo'),T0=document.title;
