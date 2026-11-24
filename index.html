@@ -548,7 +548,7 @@ var IMG=["img/thermo.jpeg","img/acoustic.jpeg","img/light.png","img/panel.png","
 var rail=document.getElementById("rail"),sel=document.getElementById("linea");
 P.forEach(function(p,i){
   var li=p.u.map(function(x){return "<li>"+x+"</li>"}).join("");
-  rail.insertAdjacentHTML("beforeend",'<article class="card"><div class="art" style="background:url('+IMG[i]+') center/var(--img-w) var(--img-h) no-repeat,'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><ul>'+li+'</ul><button class="btn" type="button" data-i="'+i+'">Agregar a la cotización</button></div></article>');
+  rail.insertAdjacentHTML("beforeend",'<article class="card"><div class="art" style="background:url('+IMG[i]+') center/var(--img-w) var(--img-h) no-repeat,'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><ul>'+li+'</ul><button class="btn" type="button" data-i="'+i+'">Realizar una cotización</button></div></article>');
   sel.insertAdjacentHTML("beforeend",'<option>'+p.n+'</option>');
 });
 sel.insertAdjacentHTML("beforeend","<option>Otra consulta</option>");
