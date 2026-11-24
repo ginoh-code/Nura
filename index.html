@@ -564,6 +564,7 @@ main:focus,.n-hero h1:focus{outline:none}
 </div>
 <div class="toast" id="toast" role="status"></div>
 
+
 <main id="catalogo" tabindex="-1" hidden>
   <div class="n-hero"><div class="wrap cat-head">
     <div>
@@ -609,7 +610,8 @@ var P=[
  {n:"NURA Panel",t:"Paneles compuestos multicapa",m:"Caras de plástico reciclado, núcleo de EPS y capas de PET.",u:["Combina aislamiento y rigidez"],c:"linear-gradient(135deg,#5b2fc0,#8b5cf6)",tag:"EPS · PET"},
  {n:"NURA Build",t:"Construcción no estructural",m:"Placas de plástico reciclado y fibras vegetales.",u:["Divisiones","Revestimientos","Cerramientos"],c:"linear-gradient(135deg,#7a45e5,#f06ba8)",tag:"Plástico · Fibras"}
 ];
-var IMG=["img/thermo.jpeg","img/acoustic.jpeg","img/light.png","img/panel.png","img/build.png"];
+var IMG=["img/thermoconstruccion.jpeg","img/acousticconstruccion.jpeg","img/lightconstruccion.jpeg","img/panelconstruccion.jpeg","img/buildconstruccion.jpeg"];
+var IMGM=["img/thermo.jpeg","img/acoustic.jpeg","img/light.png","img/panel.png","img/build.png"];
 var LK=["thermo","acoustic","light","panel","build"];
 var rail=document.getElementById("rail"),sel=document.getElementById("linea");
 P.forEach(function(p,i){
@@ -708,7 +710,7 @@ mod:'<rect x="25" y="30" width="45" height="80" '+f+'/><rect x="77" y="30" width
 return '<svg viewBox="0 0 200 130" width="200" height="130" role="img" aria-label="Ilustración esquemática">'+m[t]+'</svg>'}
 var cr=$('crail'),lc=$('lchips');
 P.forEach(function(p,i){
-  cr.insertAdjacentHTML('beforeend','<article class="cl"><div class="art" style="background-image:url('+IMG[i]+'),'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><button class="btn" type="button" data-l="'+i+'" aria-expanded="false" aria-controls="catPanel">Ver productos</button></div></article>');
+  cr.insertAdjacentHTML('beforeend','<article class="cl"><div class="art" style="background-image:url('+IMGM[i]+'),'+p.c+'"><b>'+p.tag+'</b></div><div class="body"><h3>'+p.n+'</h3><p><strong>'+p.t+'.</strong> '+p.m+'</p><button class="btn" type="button" data-l="'+i+'" aria-expanded="false" aria-controls="catPanel">Ver productos</button></div></article>');
   lc.insertAdjacentHTML('beforeend','<button type="button" class="lchip" data-l="'+i+'" aria-pressed="false">'+p.n+'</button>')});
 function goLine(i){var h='#catalogo-'+LK[i];if(location.hash===h)route(false);else location.hash=h}
 function lineClick(e){var b=e.target.closest('button[data-l]');if(b)goLine(+b.dataset.l)}
